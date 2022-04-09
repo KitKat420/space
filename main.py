@@ -10,11 +10,14 @@ WINDOW = pygame.display.set_mode((WIDTH, HEIGHT))
 
 background = pygame.image.load("./assets/background.jpg", "background-img")
 scaled_bg = pygame.transform.scale(background, (800, 800))
+ship = pygame.image.load("./assets/ship.png", "ship-img")
+scaled_ship = pygame.transform.scale(ship, (100, 100))
 
 
 def display():
     WINDOW.fill(BLACK)
     pygame.Surface.blit(WINDOW, scaled_bg, ORIGIN)
+    pygame.Surface.blit(WINDOW, scaled_ship, (50, 50))
 
 
 def main():
