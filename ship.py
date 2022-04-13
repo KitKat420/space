@@ -14,6 +14,7 @@ class Ship(Alien):
         self.did_fire = False
 
     def controls(self, key_pressed):
+        """this function takes input from keyboard and performs actions based on the key pressed."""
         if key_pressed[pygame.K_a]:
             self.asset_rect.x -= 5
         elif key_pressed[pygame.K_d]:

@@ -24,7 +24,7 @@ ship = Ship('./assets/ship.png', 'ship_img')
 alien = Alien('./assets/alien.png', 'alien_img')
 
 
-bullets = []
+ship_bullets = []
 alien_bullets = []
 
 
@@ -44,11 +44,15 @@ def draw():
         bullet_group[1].y = ship.asset_rect.y
 
         # appending bullet to bullets list
-        bullets.append(bullet_group)
+        ship_bullets.append(bullet_group)
 
-    for bullet in bullets:
+    for bullet in ship_bullets:
         WINDOW.blit(bullet[0], bullet[1])
         bullet[1].y -= 5
+
+    for bullet in alien_bullets:
+        WINDOW.blit(bullet[0], bullet[1])
+        bullet[1].y += 2
 
 
 def main():
@@ -58,14 +62,20 @@ def main():
     alien.asset_rect.x = CENTER_X
     alien.asset_rect.y = 20
 
-    # my_event = pygame.USEREVENT + 1
-    # pygame.time.set_timer(my_event, 3000)
+    alien_bullet_as_rect = alien.alien_bullet_asset.get_rect()
+    alien_b_group = (alien.alien_bullet_asset, alien_bullet_as_rect)
+
+    my_event = pygame.USEREVENT + 1
+    pygame.time.set_timer(my_event, 3000)
     while True:
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
-            # elif event.type == my_event:
-                # alien_bullets.append(alien_bullet)
+            elif event.type == my_event:
+                alien_b_group[1].x = alien.asset_rect.x
+                alien_b_group[1].y = alien.asset_rect.y
+                alien_bullets.append(alien_b_group)
 
         ship.controls(pygame.key.get_pressed())
         alien.movement()
