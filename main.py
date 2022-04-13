@@ -68,6 +68,7 @@ def main():
                 # alien_bullets.append(alien_bullet)
 
         ship.controls(pygame.key.get_pressed())
+        alien.movement()
         draw()
         pygame.display.flip()
         clock.tick(FPS)
