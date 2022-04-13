@@ -7,6 +7,11 @@ class Ship(Alien):
         self.image = image_path
         self.hint = image_hint
         super().__init__(self.image, self.hint)
+        load_bullet = pygame.image.load(
+            './assets/bullet.png', 'bullet_img')
+        self.bullet_asset = pygame.transform.scale(load_bullet, (100, 100))
+        self.bullet_rect = self.bullet_asset.get_rect()
+        self.did_fire = False
 
     def controls(self, key_pressed):
         if key_pressed[pygame.K_a]:
