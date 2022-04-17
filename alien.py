@@ -1,19 +1,23 @@
-from re import L
 import pygame
-
+from explosion import Explosion
 # WINDOW DIMENSIONS
 WIDTH, HEIGHT = 800, 600
 
 
 class Alien:
-    def __init__(self, image_path, image_hint):
-        self.image = image_path
-        self.hint = image_hint
-        load_bullet = pygame.image.load(
-            "./assets/alien_bullet.png", "alien_bullet_img")
-        self.alien_bullet_asset = pygame.transform.scale(
-            load_bullet, (100, 100))
-        self.asset = pygame.image.load(image_path, image_hint)
+    def __init__(self, char_asset, bullet_asset):
+        self.char_asset = char_asset
+        self.bullet_asset = bullet_asset
+        # bullet asset stuff
+
+        self.bullet = pygame.transform.rotate(
+            pygame.transform.scale(
+                pygame.image.load(bullet_asset), (100, 100)),
+            180
+        )
+
+        # alien asset stuff
+        self.asset = pygame.image.load(char_asset)
         self.asset_rect = self.asset.get_rect()
         self.direction = 5
 
