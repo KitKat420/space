@@ -1,0 +1,12 @@
+1. setup pygame
+2. load background image
+3. load ship
+4. move ship
+5. ship shoot
+6. load alien
+7. move alien
+8. apply borders
+9. collision detection
+10. explosion
+11. scoreboard
+12. win condition 
